@@ -1,6 +1,6 @@
 import http from "http";
 import EventEmitter from "events";
-import Router from "./router";
+import Router from "./router/router";
 
 
 export default class App {
@@ -12,7 +12,7 @@ export default class App {
     this.server = this._createServer();
   }
 
-  listen(port: string | number | undefined, callback: () => void): void {
+  listen(port: string | number, callback: () => void): void {
     this.server.listen(port, callback);
     
   }
