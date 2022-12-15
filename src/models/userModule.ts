@@ -11,16 +11,32 @@ export const findAll = () => {
 };
 
 export const findById = (id: string) => {
-  return new Promise((resolve) => {
-    const user = users.find((user) => user.id === id);
-    resolve(user);
+  return new Promise<User>((resolve) => {
+    const user = users?.find((user) => user.id === id);
+    resolve(user!);
   });
 };
 
 export const create = (user: User) => {
-  return new Promise((resolve) => {
+  return new Promise<User>((resolve) => {
     const newUser = { id: uuidv4(), ...user } as User;
     users.push(newUser);
     resolve(newUser);
+  });
+};
+
+export const update = (user: User) => {
+  return new Promise<User>((resolve) => {
+    const userIndex = users.findIndex((userFromArray) => userFromArray.id === user.id);
+    users.splice(userIndex, 1, user);
+    resolve(user);
+  });
+};
+
+export const deleteUserById = (id: string, user: User) => {
+  return new Promise<void>((resolve) => {
+    const userIndex = users.findIndex((user) => user.id === id);
+    users.splice(userIndex, 1);
+    resolve();
   });
 };

@@ -1,7 +1,9 @@
 import http from 'http';
 import { createUser } from './controllers/createUser';
+import { deleteUser } from './controllers/deleteUser';
 import { getAllUsers } from './controllers/getAllUsers';
 import { getUser } from './controllers/getUser';
+import { updateUser } from './controllers/updateUser';
 
 import { endpointAPI, httpMethods, ErrorMessage } from './data/constants';
 
@@ -35,8 +37,10 @@ export const serverStart = () => {
           getUser(req, res, id);
           break;
         case PUT:
+            updateUser(req, res, id);
           break;
         case DELETE:
+            deleteUser(req, res, id);
           break;
         default:
           res.writeHead(404, { 'Content-Type': 'application/json' });
