@@ -2,7 +2,7 @@ import { IncomingMessage, ServerResponse } from 'http';
 import { ErrorMessage } from '../data/constants';
 import { deleteUserById, findById } from '../models/userModule';
 
-const { NOT_USER, INVALID_ID } = ErrorMessage;
+const { NOT_USER, INVALID_ID, SOMETHING_WRONG } = ErrorMessage;
 
 export const deleteUser = async (req: IncomingMessage, res: ServerResponse, id: string) => {
   try {
@@ -20,6 +20,7 @@ export const deleteUser = async (req: IncomingMessage, res: ServerResponse, id: 
     }
   } catch (err) {
     console.log(err);
+    res.writeHead(500, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ message: SOMETHING_WRONG }));
   }
-  
 };

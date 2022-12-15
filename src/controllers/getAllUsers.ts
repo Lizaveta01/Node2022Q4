@@ -10,5 +10,7 @@ export const getAllUsers = async (req: IncomingMessage, res: ServerResponse) => 
     res.end(JSON.stringify(users));
   } catch (err) {
     console.log(err);
+    res.writeHead(500, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ message: SOMETHING_WRONG }));
   }
 };

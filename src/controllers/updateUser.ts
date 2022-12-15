@@ -14,12 +14,11 @@ export const updateUser = async (req: IncomingMessage, res: ServerResponse, id: 
     const { username, age, hobbies } = JSON.parse(body);
 
     const user: User = {
-        id,
-        username,
-        age,
-        hobbies,
-      };
-
+      id,
+      username,
+      age,
+      hobbies,
+    };
 
     if (!id.match(/^[0-9A-F]{8}-[0-9A-F]{4}-[4][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i)) {
       res.writeHead(400, { 'Content-Type': 'application/json' });
@@ -28,13 +27,13 @@ export const updateUser = async (req: IncomingMessage, res: ServerResponse, id: 
       res.writeHead(404, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ message: NOT_USER }));
     } else {
-        const newUser = await update(user);
-        res.writeHead(201, { 'Content-Type': 'application/json' });
-        return res.end(JSON.stringify(newUser));
+      const newUser = await update(user);
+      res.writeHead(201, { 'Content-Type': 'application/json' });
+      return res.end(JSON.stringify(newUser));
     }
   } catch (err) {
-    res.writeHead(400, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ message: SOMETHING_WRONG }));
     console.log(err);
+    res.writeHead(500, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ message: SOMETHING_WRONG }));
   }
 };

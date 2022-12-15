@@ -1,9 +1,9 @@
-import { IncomingMessage, ServerResponse } from "http";
-import { ErrorMessage, User } from "../data/constants";
-import { create } from "../models/userModule";
-import { getPostData } from "../utils/getPostData";
+import { IncomingMessage, ServerResponse } from 'http';
+import { ErrorMessage, User } from '../data/constants';
+import { create } from '../models/userModule';
+import { getPostData } from '../utils/getPostData';
 
-const { INVALID_BODY, INVALID_BODY_TYPES } = ErrorMessage;
+const { INVALID_BODY, INVALID_BODY_TYPES, SOMETHING_WRONG } = ErrorMessage;
 
 export const createUser = async (req: IncomingMessage, res: ServerResponse) => {
   try {
@@ -33,8 +33,8 @@ export const createUser = async (req: IncomingMessage, res: ServerResponse) => {
       return res.end(JSON.stringify(newUser));
     }
   } catch (err) {
-    res.writeHead(400, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ message: INVALID_BODY_TYPES }));
     console.log(err);
+    res.writeHead(500, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ message: SOMETHING_WRONG }));
   }
 };
