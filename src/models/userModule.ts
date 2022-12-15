@@ -20,7 +20,6 @@ export const findById = (id: string) => {
 export const create = (user: User) => {
   return new Promise((resolve) => {
     const newUser = { id: uuidv4(), ...user } as User;
-    console.log(users);
     users.push(newUser);
     resolve(newUser);
   });

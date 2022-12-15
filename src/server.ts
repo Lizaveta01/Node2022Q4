@@ -1,22 +1,50 @@
 import http from 'http';
-import { getAllUsers, getUser, createUser } from './controllers/userController';
+import { createUser } from './controllers/createUser';
+import { getAllUsers } from './controllers/getAllUsers';
+import { getUser } from './controllers/getUser';
+
+import { endpointAPI, httpMethods, ErrorMessage } from './data/constants';
+
+const { GET, POST, PUT, DELETE } = httpMethods;
+const { NOT_ROUTE, NOT_REQUEST, NOT_USER } = ErrorMessage;
 
 export const serverStart = () => {
   const PORT = process.env.PORT || 4000;
 
-  console.log(process.env.PORT);
-
   const server = http.createServer((req, res) => {
-    if (req.url === '/api/users' && req.method === 'GET') {
-      getAllUsers(req, res);
-    } else if (req.url?.match(/\/api\/users\/([0-9]+)/) && req.method === 'GET') {
-      const userId = req.url.split('/')[3];
-      getUser(req, res, userId);
-    } else if (req.url === '/api/users' && req.method === 'POST') {
-      createUser(req, res);
+    const id = req.url?.split('/')[3];
+    const pathBase = req.url?.split('/').slice(1, 3).join('/');
+    console.log(pathBase);
+
+    if (pathBase === endpointAPI && !id) {
+      switch (req.method) {
+        case GET:
+          getAllUsers(req, res);
+          break;
+        case POST:
+          createUser(req, res);
+          break;
+        default:
+          res.writeHead(404, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ message: NOT_REQUEST }));
+      }
+    } else if (pathBase === endpointAPI && id) {
+      console.log('iddddd');
+      switch (req.method) {
+        case GET:
+          getUser(req, res, id);
+          break;
+        case PUT:
+          break;
+        case DELETE:
+          break;
+        default:
+          res.writeHead(404, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ message: NOT_REQUEST }));
+      }
     } else {
       res.writeHead(404, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ message: 'Route Not Found' }));
+      res.end(JSON.stringify({ message: NOT_ROUTE }));
     }
   });
 

@@ -3,16 +3,17 @@ export const getPostData = (req: {
 }): Promise<string> => {
   return new Promise((resolve, reject) => {
     try {
-      let body = "";
+      let body = '';
 
-      req.on("data", (chunk: string) => {
+      req.on('data', (chunk: string) => {
         body += chunk.toString();
       });
 
-      req.on("end", () => {
+      req.on('end', () => {
         resolve(body);
       });
     } catch (error) {
+      
       reject(error);
     }
   });
