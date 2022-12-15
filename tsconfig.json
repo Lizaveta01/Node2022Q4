@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "module": "commonjS",
+    "module": "commonjs",
     "esModuleInterop": true,
-    "target": "es2016",
+    "target": "es2020",
     "moduleResolution": "Node",
     "outDir": "dist",
     "forceConsistentCasingInFileNames": true,
@@ -11,10 +11,11 @@
     "strict": true,
     "noImplicitAny": true,
     "useUnknownInCatchVariables": false,
-    "inlineSourceMap": true
+    "inlineSourceMap": true,
+    "resolveJsonModule": true,
   },
   "ts-node": {
-      "esm": true
+    "esm": true
   },
   "lib": ["esnext"]
 }

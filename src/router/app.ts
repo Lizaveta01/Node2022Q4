@@ -1,6 +1,6 @@
 import http from "http";
 import EventEmitter from "events";
-import Router from "./router/router";
+import Router from "./router";
 
 
 export default class App {

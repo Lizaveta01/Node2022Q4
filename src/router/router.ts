@@ -2,11 +2,6 @@ import EventEmitter from "events";
 
 export const emitter = new EventEmitter();
 
-// interface endpoint {
-//   "/users": {
-//     GET: handler;
-//   };
-// }
 export default class Router {
   endpoints: any;
   constructor() {
@@ -15,6 +10,7 @@ export default class Router {
 
   request(method = "GET", path: string, handler: any) {
     if (!this.endpoints[path]) {
+      
       this.endpoints[path] = {};
     }
     const endpoint = this.endpoints[path];

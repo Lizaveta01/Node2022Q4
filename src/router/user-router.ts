@@ -1,16 +1,12 @@
-import Router from "./router";
+// import Router from "./router";
+// import { endpointAPI } from "../models/constants";
 
-export const router = new Router();
+// export const router = new Router();
 
-const users = [
-  { id: 1, name: "John" },
-  { id: 2, name: "Liza" },
-];
+// router.get(endpointAPI, (req: any, res: { end: (arg0: string) => void }) => {
+//   res.end(JSON.stringify(users));
+// });
 
-router.get("/users", (req: any, res: { end: (arg0: string) => void }) => {
-  res.end(JSON.stringify(users));
-});
-
-router.post("/users", (req: any, res: { end: (arg0: string) => void }) => {
-    res.end(JSON.stringify(users));
-  });
+// router.post(endpointAPI, (req: any, res: { end: (arg0: string) => void }) => {
+//     res.end(JSON.stringify(users));
+//   });
