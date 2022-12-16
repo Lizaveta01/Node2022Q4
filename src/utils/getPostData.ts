@@ -1,20 +1,17 @@
-export const getPostData = (req: {
-  on: (arg0: string, arg1: { (chunk: string): void }) => void;
-}): Promise<string> => {
-  return new Promise((resolve, reject) => {
-    try {
-      let body = '';
+import { IncomingMessage } from 'http';
+import { User } from '../models/models';
 
-      req.on('data', (chunk: string) => {
-        body += chunk.toString();
-      });
+export const getPostData = (req: IncomingMessage): Promise<User> => {
+  return new Promise((resolve) => {
+    req.setEncoding('utf8');
+    let body = '';
 
-      req.on('end', () => {
-        resolve(body);
-      });
-    } catch (error) {
-      
-      reject(error);
-    }
+    req.on('data', (chunk: Buffer) => {
+      body += chunk;
+    });
+
+    req.on('end', () => {
+      resolve(JSON.parse(body));
+    });
   });
 };

@@ -22,6 +22,7 @@ export const create = (user: User) => {
     const newUser = { id: uuidv4(), ...user } as User;
     users.push(newUser);
     resolve(newUser);
+    return newUser
   });
 };
 

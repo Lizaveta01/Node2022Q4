@@ -7,6 +7,7 @@ export enum httpMethods {
   DELETE = 'DELETE',
 }
 
+
 export enum ErrorMessage {
   NOT_ROUTE = 'Page Not Found',
   NOT_REQUEST = 'Request Not Found',
@@ -15,4 +16,5 @@ export enum ErrorMessage {
   INVALID_BODY = 'Request does not contain required fields',
   INVALID_BODY_TYPES = 'Request does not contain required fields types',
   SOMETHING_WRONG = 'Somming went wrong',
+  SUCCESSFULLY_DELETE = 'User successfully deleted',
 }
