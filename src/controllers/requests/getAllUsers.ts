@@ -1,6 +1,6 @@
 import { IncomingMessage, ServerResponse } from 'http';
-import {  findAll } from '../models/userModule';
-import { ErrorMessage } from "../data/constants";
+import {  findAll } from '../createUsersResponce';
+import { ErrorMessage } from "../../models/constants";
 
 const { SOMETHING_WRONG } = ErrorMessage;
 

@@ -1,7 +1,8 @@
 import { IncomingMessage, ServerResponse } from 'http';
-import { ErrorMessage, User } from '../data/constants';
-import { findById, update } from '../models/userModule';
-import { getPostData } from '../utils/getPostData';
+import { ErrorMessage} from '../../models/constants';
+import { User } from '../../models/models';
+import { findById, update } from '../createUsersResponce';
+import { getPostData } from '../../utils/getPostData';
 
 const { INVALID_ID, NOT_USER, SOMETHING_WRONG } = ErrorMessage;
 

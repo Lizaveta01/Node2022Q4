@@ -1,7 +1,8 @@
 import { IncomingMessage, ServerResponse } from 'http';
-import { ErrorMessage, User } from '../data/constants';
-import { create } from '../models/userModule';
-import { getPostData } from '../utils/getPostData';
+import { ErrorMessage, } from '../../models/constants';
+import {  User } from '../../models/models';
+import { create } from '../createUsersResponce';
+import { getPostData } from '../../utils/getPostData';
 
 const { INVALID_BODY, INVALID_BODY_TYPES, SOMETHING_WRONG } = ErrorMessage;
 

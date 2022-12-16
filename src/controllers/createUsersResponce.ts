@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { dataUsers } from '../data/users';
-import { User } from '../data/constants';
+import { User } from '../models/models';
 
 let { users } = dataUsers;
 

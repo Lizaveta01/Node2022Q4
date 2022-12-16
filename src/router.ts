@@ -1,13 +1,13 @@
 import http from 'http';
 import 'dotenv/config.js';
 
-import { createUser } from './controllers/createUser';
-import { deleteUser } from './controllers/deleteUser';
-import { getAllUsers } from './controllers/getAllUsers';
-import { getUser } from './controllers/getUser';
-import { updateUser } from './controllers/updateUser';
+import { createUser } from './controllers/requests/createUser';
+import { deleteUser } from './controllers/requests/deleteUser';
+import { getAllUsers } from './controllers/requests/getAllUsers';
+import { getUser } from './controllers/requests/getUser';
+import { updateUser } from './controllers/requests/updateUser';
 
-import { endpointAPI, httpMethods, ErrorMessage } from './data/constants';
+import { endpointAPI, httpMethods, ErrorMessage } from './models/constants';
 
 const { GET, POST, PUT, DELETE } = httpMethods;
 const { NOT_ROUTE, NOT_REQUEST } = ErrorMessage;
