@@ -1,6 +1,8 @@
 import { IncomingMessage, ServerResponse } from 'http';
 import {  findAll } from '../models/userModule';
+import { ErrorMessage } from "../data/constants";
 
+const { SOMETHING_WRONG } = ErrorMessage;
 
 export const getAllUsers = async (req: IncomingMessage, res: ServerResponse) => {
   try {

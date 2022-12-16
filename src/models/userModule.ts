@@ -12,7 +12,7 @@ export const findAll = () => {
 
 export const findById = (id: string) => {
   return new Promise<User>((resolve) => {
-    const user = users?.find((user) => user.id === id);
+    const user = users?.find((user: User) => user.id === id);
     resolve(user!);
   });
 };
@@ -27,7 +27,7 @@ export const create = (user: User) => {
 
 export const update = (user: User) => {
   return new Promise<User>((resolve) => {
-    const userIndex = users.findIndex((userFromArray) => userFromArray.id === user.id);
+    const userIndex = users.findIndex((userFromArray: User) => userFromArray.id === user.id);
     users.splice(userIndex, 1, user);
     resolve(user);
   });
@@ -35,7 +35,7 @@ export const update = (user: User) => {
 
 export const deleteUserById = (id: string, user: User) => {
   return new Promise<void>((resolve) => {
-    const userIndex = users.findIndex((user) => user.id === id);
+    const userIndex = users.findIndex((user: User) => user.id === id);
     users.splice(userIndex, 1);
     resolve();
   });

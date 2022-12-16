@@ -1,5 +1,5 @@
 import { IData } from "./constants";
 
-export const dataUsers: IData = {
+export const dataUsers:IData = {
     users: []
 }

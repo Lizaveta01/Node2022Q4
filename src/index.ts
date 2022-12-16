@@ -1,3 +1,12 @@
-import { serverStart } from "./server";
+import { router } from './router';
+import http from 'http';
 
-serverStart();
+const PORT = process.env.PORT || 4000;
+const HOST: string = process.env.HOST || 'localhost';
+
+export const server = http.createServer().listen(PORT, (): void => {
+  console.log(`Server is running on ${PORT}:${HOST}`);
+});
+
+server.on('request', router);
+

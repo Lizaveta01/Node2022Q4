@@ -1,9 +1,9 @@
 import { IncomingMessage, ServerResponse } from 'http';
 import { ErrorMessage, User } from '../data/constants';
-import { create, findById, update } from '../models/userModule';
+import { findById, update } from '../models/userModule';
 import { getPostData } from '../utils/getPostData';
 
-const { INVALID_BODY, INVALID_BODY_TYPES, INVALID_ID, NOT_USER, SOMETHING_WRONG } = ErrorMessage;
+const { INVALID_ID, NOT_USER, SOMETHING_WRONG } = ErrorMessage;
 
 export const updateUser = async (req: IncomingMessage, res: ServerResponse, id: string) => {
   try {

@@ -2,7 +2,7 @@ import { IncomingMessage, ServerResponse } from "http";
 import { ErrorMessage } from "../data/constants";
 import { findById } from "../models/userModule";
 
-const { NOT_USER, INVALID_ID } = ErrorMessage;
+const { NOT_USER, INVALID_ID, SOMETHING_WRONG } = ErrorMessage;
 
 export const getUser = async (req: IncomingMessage, res: ServerResponse, id: string) => {
   try {
