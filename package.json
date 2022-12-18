@@ -5,8 +5,8 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "npx nodemon src/index.ts",
-    "start:prod": "npx webpack && node ./dist/bundle.js",
-    "start:multi": "npx nodemon ./src/cluster.ts",
+    "start:prod": "cross-env NODE_ENV=production && node ./dist/bundle.js",
+    "start:multi": "cross-env NODE_ENV=development CLUSTER=ON webpack && node ./dist/bundle.js",
     "test": "jest --detectOpenHandles"
   },
   "repository": {

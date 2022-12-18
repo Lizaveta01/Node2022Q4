@@ -1,8 +1,13 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.ts',
-  mode: 'development',
+  mode: process.env.NODE_ENV,
+  entry: {
+    main: path.resolve(
+        __dirname,
+        process.env.CLUSTER === 'ON' ? './src/cluster/cluster.ts' : './src/index.ts'
+    ),
+},
   target: 'node',
   output: {
     filename: 'bundle.js',
