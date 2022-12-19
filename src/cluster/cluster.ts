@@ -1,28 +1,28 @@
 import cluster from 'cluster';
 import os from 'os';
-import { server }  from '..';
+
+const PORT = process.env.PORT || 4000;
 
 void (async () => {
   if (cluster.isPrimary) {
     const cpusCount = os.cpus().length;
     console.log(`CPUs: ${cpusCount}`);
-    console.log(`Master started. Pid: ${process.pid}`);
+    console.log(`Master started. Pid: ${process.pid}. PORT: ${PORT}`);
 
-    let workerPort: number;
     for (let i = 0; i < cpusCount; i++) {
-    //   workerPort = Number(process.env.PORT) + 1;
-      cluster.fork();
+      const newPort = +PORT + 1 + i;
+      console.log(newPort);
+      await cluster.fork({ PORT: newPort });
     }
-    cluster.on('exit', (worker) => {
-      console.log(`worker ${worker.process.pid} died`);
-    });
-    cluster.on('error', (worker) => {
-        process.exit(0);
-      });
+    // cluster.on('exit', (worker) => {
+    //   console.log(`worker ${worker.process.pid} died`);
+    // });
+    // cluster.on('error', (worker) => {
+    //     process.exit(0);
+    //   });
   }
   if (cluster.isWorker) {
     console.log(`Worker ${process.pid} started. PORT ${process.env.PORT}`);
-    await import('../index');
+    import('../index');
   }
-  
 })();
