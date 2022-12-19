@@ -14,7 +14,7 @@ import { formatJSONResponse } from './utils/JSONResponce';
 
 
 const { GET, POST, PUT, DELETE } = httpMethods;
-const { NOT_REQUEST, SOMETHING_WRONG } = ErrorMessage;
+const { NOT_ROUTE, SOMETHING_WRONG } = ErrorMessage;
 
 export const requestHandler = async (req: Request): Promise<IResponse | undefined> => {
   const id = req.url?.split('/')[3];
@@ -38,6 +38,6 @@ export const requestHandler = async (req: Request): Promise<IResponse | undefine
         return formatJSONResponse({ message: SOMETHING_WRONG }, 500);
     }
   } else {
-    return formatJSONResponse({ message: NOT_REQUEST }, 404);
+    return formatJSONResponse({ message: NOT_ROUTE }, 404);
   }
 };
