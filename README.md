@@ -4,7 +4,7 @@ Task: https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/c
 
 Deadlines: start: 2023-01-02	end: 2023-01-17
  ---
-Approximate score: **---**
+Approximate score: **222**
 
 +10 The repository with the application contains a Readme.md file containing detailed instructions for installing, running and using the application
 +10 GET api/users implemented properly
@@ -50,6 +50,7 @@ npm run test
 
 Test coverage
 
+![image](https://user-images.githubusercontent.com/81522781/212133924-a4d955bd-de6e-4dc3-81bd-bac1e9bdfc31.png)
 
 
 ## Endpoints
@@ -62,7 +63,7 @@ DELETE http://localhost:4000/api/users/{uuid}
 POST   http://localhost:4000/api/users
 ```
 
-## Data Format for POST request
+# Data Format for POST request
 ``` 
 {
     "username": "User1",
