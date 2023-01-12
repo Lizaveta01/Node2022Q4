@@ -23,6 +23,6 @@ export const updateUser = async (id: string, body: User) => {
     return formatJSONResponse({ message: NOT_USER }, 404);
   } else {
     const newUser = await update(user);
-    return formatJSONResponse({ user: newUser }, 201);
+    return formatJSONResponse({ user: newUser }, 200);
   }
 };

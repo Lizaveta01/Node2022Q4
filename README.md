@@ -1,5 +1,4 @@
 ## Node2022Q4
----
 # Simple Crud API
 Task: https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/crud-api/assignment.md
 
@@ -52,12 +51,25 @@ npm run test
 Test coverage
 
 
+
 ## Endpoints
 
 ``` 
-GET    http://localhost:5000/api/users 
-GET    http://localhost:5000/api/users/{uuid}
-PUT    http://localhost:5000/api/users/{uuid}
-DELETE http://localhost:5000/api/users/{uuid}
-POST   http://localhost:5000/api/users
+GET    http://localhost:4000/api/users 
+GET    http://localhost:4000/api/users/{uuid}
+PUT    http://localhost:4000/api/users/{uuid}
+DELETE http://localhost:4000/api/users/{uuid}
+POST   http://localhost:4000/api/users
+```
+
+## Data Format for POST request
+``` 
+{
+    "username": "User1",
+    "age": 20,
+    "hobbies": [
+        "coding'",
+        "crying"
+    ]
+}
 ```

@@ -8,9 +8,6 @@ export type User = {
 export interface IData {
   users: User[];
 }
-export interface IData {
-  users: User[];
-}
 interface IMessage {
   message: string;
 }

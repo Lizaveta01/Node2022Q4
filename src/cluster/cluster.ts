@@ -15,12 +15,6 @@ void (async () => {
       console.log(newPort);
       await cluster.fork({ PORT: newPort });
     }
-    // cluster.on('exit', (worker) => {
-    //   console.log(`worker ${worker.process.pid} died`);
-    // });
-    // cluster.on('error', (worker) => {
-    //     process.exit(0);
-    //   });
   }
   if (cluster.isWorker) {
     console.log(`Worker ${process.pid} started. PORT ${process.env.PORT}`);
