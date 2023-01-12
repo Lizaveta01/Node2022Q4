@@ -1,5 +1,6 @@
 import cluster from 'cluster';
 import os from 'os';
+import 'dotenv/config.js';
 
 const PORT = process.env.PORT || 4000;
 
